@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Joaquin C. Ligot | Interactive Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0284c7 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <img id="navAvatar" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAALCAAmAC0BAREA/8QAHwAAAQEBAQEBAQEBAAAAAAAAAAECBAUGBwgJCgv/xacRAAECAwUEBQQGBgYIBgANAQACEQMEBRIhMQYTQVEicYEUIzKRobEHI9EJUsHxFiRxU2IWgmOCkjU3Q6LwNHOys/AkRVRzk7PC0+LzhJSUteJUZGRldXZXlqOklOT1N1WWpLa1t8Pz/9oADAMBAAIRAxEAPwD6iN2K1E9lF9s0xX4q3+K05K9/aJjH6n2h5V9p1kI97y9W5J94C56u3nHzX97z6nK/b5fC3vP7pC1wA6jO458u47x7V94JgPzO2f5uD769tH2vK3v7P3192f1hL2J6e8z82X+nL8TqD19x8p/7q+W/8ALf2T5wWwF36+f8n57bT7j7b/ACN9s8736+P+X8tvsjvvvtscT7b/ACPtvs3/2Q==" alt="David Joaquin C. Ligot" class="w-10 h-10 rounded-xl object-cover ring-2 ring-brand-500/50 shadow-md group-hover:scale-105 transition-transform">
+                <div>
+                    <span class="font-bold text-slate-900 dark:text-white text-base leading-none block">David J. C. Ligot</span>
+                    <span class="text-xs text-brand-600 dark:text-brand-400 font-medium">Operations & Customer Leader</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#overview" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Overview</a>
+                <a href="#experience" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Skills & Tools</a>
+                <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions Right -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle -->
+                <button id="themeToggleBtn" type="button" aria-label="Toggle Theme" class="p-2.5 rounded-xl bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
+                    <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+                </button>
+
+                <!-- Quick Hire Button -->
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl gradient-bg text-white font-semibold text-sm shadow-md hover:shadow-lg hover:opacity-95 transition-all">
+                    <span>Contact Me</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" type="button" aria-label="Toggle Menu" class="md:hidden p-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-4 py-4 space-y-3">
+            <a href="#overview" class="block py-2 text-sm font-medium hover:text-brand-500">Overview</a>
+            <a href="#experience" class="block py-2 text-sm font-medium hover:text-brand-500">Experience</a>
+            <a href="#skills" class="block py-2 text-sm font-medium hover:text-brand-500">Skills & Tools</a>
+            <a href="#contact" class="block py-2 text-sm font-medium hover:text-brand-500">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+            <div class="absolute inset-0 -z-10 opacity-30 dark:opacity-20">
+                <div class="absolute top-10 left-1/4 w-72 h-72 bg-blue-500 rounded-full filter blur-3xl"></div>
+                <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            Available for Global Remote Roles
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                            Hi, I'm <span class="gradient-text">David Joaquin</span>
+                        </h1>
+
+                        <p class="text-lg sm:text-xl font-medium text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            Customer Experience & Operations Leader | ITIL Certified | Technical Support & Process Specialist
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            Customer-focused professional with over 16 years of experience supporting clients across customer service, healthcare operations, client coordination, marketing, and IT service desk roles[cite: 5]. Experienced in patient intake, client onboarding, lead generation, and workflow coordination[cite: 5].
+                        </p>
+
+                        <!-- Call To Actions -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#experience" class="px-6 py-3 rounded-xl gradient-bg text-white font-semibold text-sm shadow-lg hover:shadow-brand-500/25 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
+                                <span>Explore Experience</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                            </a>
+                            <button id="copyEmailBtn" type="button" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-sm shadow-sm hover:bg-slate-100 dark:hover:bg-slate-700/80 active:scale-95 transition-all flex items-center gap-2">
+                                <i data-lucide="copy" class="w-4 h-4 text-brand-500"></i>
+                                <span id="copyEmailText">Copy Email Address</span>
+                            </button>
+                        </div>
+
+                        <!-- Key Highlights Quick Badges -->
+                        <div class="pt-6 border-t border-slate-200 dark:border-slate-800/80 flex flex-wrap justify-center lg:justify-start gap-6 text-slate-600 dark:text-slate-400 text-xs font-medium">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+                                <span>16+ Years Experience[cite: 5]</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="award" class="w-4 h-4 text-brand-500"></i>
+                                <span>ITIL Certified[cite: 5]</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="globe" class="w-4 h-4 text-cyan-500"></i>
+                                <span>EF SET C2 Proficient (English)[cite: 5]</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="laptop" class="w-4 h-4 text-purple-500"></i>
+                                <span>US Remote Ready</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Key Card Profile Overview with Editable Photo Feature -->
+                    <div class="lg:col-span-5">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                            
+                            <div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <!-- Photo Upload Container -->
+                                    <div id="photoContainer" class="relative group cursor-pointer flex-shrink-0" title="Click to change profile photo (Admin Only)">
+                                        <img id="mainAvatar" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAALCAAmAC0BAREA/8QAHwAAAQEBAQEBAQEBAAAAAAAAAAECBAUGBwgJCgv/xacRAAECAwUEBQQGBgYIBgANAQACEQMEBRIhMQYTQVEicYEUIzKRobEHI9EJUsHxFiRxU2IWgmOCkjU3Q6LwNHOys/AkRVRzk7PC0+LzhJSUteJUZGRldXZXlqOklOT1N1WWpLa1t8Pz/9oADAMBAAIRAxEAPwD6iN2K1E9lF9s0xX4q3+K05K9/aJjH6n2h5V9p1kI97y9W5J94C56u3nHzX97z6nK/b5fC3vP7pC1wA6jO458u47x7V94JgPzO2f5uD769tH2vK3v7P3192f1hL2J6e8z82X+nL8TqD19x8p/7q+W/8ALf2T5wWwF36+f8n57bT7j7b/ACN9s8736+P+X8tvsjvvvtscT7b/ACPtvs3/2Q==" alt="David Joaquin C. Ligot" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-brand-500/50 shadow-lg transition-opacity group-hover:opacity-80">
+                                        <!-- Camera Overlay Icon -->
+                                        <div class="absolute inset-0 bg-black/40 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <i data-lucide="camera" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                    </div>
+                                    <input type="file" id="photoInput" accept="image/*" class="hidden">
+
+                                    <div>
+                                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">David Joaquin C. Ligot</h3>
+                                        <p class="text-xs text-brand-600 dark:text-brand-400 font-semibold">B.S. Information Technology[cite: 5]</p>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1">
+                                            <i data-lucide="map-pin" class="w-3 h-3 text-red-500"></i> Philippines
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4 text-sm">
+                                    <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/50">
+                                        <span class="text-xs font-semibold text-slate-400 uppercase block mb-1">Current Focus</span>
+                                        <p class="text-slate-700 dark:text-slate-200 font-medium">Customer Support Specialist, Remote Operations & IT Support Systems</p>
+                                    </div>
+
+                                    <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/50">
+                                        <span class="text-xs font-semibold text-slate-400 uppercase block mb-1">Education & Certifications</span>
+                                        <p class="text-slate-700 dark:text-slate-200 font-medium">B.S. IT — Samson College of Science & Technology[cite: 5]</p>
+                                        <p class="text-xs text-brand-500 font-semibold mt-1">ITIL Certified[cite: 5] | EF SET English C2 Proficient[cite: 5]</p>
+                                    </div>
+
+                                    <div class="pt-2 flex flex-col gap-2">
+                                        <a href="mailto:urbanscience15@gmail.com" class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-500 transition-colors text-xs font-medium">
+                                            <span class="flex items-center gap-2">
+                                                <i data-lucide="mail" class="w-4 h-4 text-brand-500"></i>
+                                                urbanscience15@gmail.com[cite: 5]
+                                            </span>
+                                            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+                                        </a>
+
+                                        <a href="tel:+639672340115" class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-500 transition-colors text-xs font-medium">
+                                            <span class="flex items-center gap-2">
+                                                <i data-lucide="phone" class="w-4 h-4 text-green-500"></i>
+                                                +639672340115[cite: 5]
+                                            </span>
+                                            <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats / Metrics Section -->
+        <section id="overview" class="py-12 bg-white dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 mb-1">16+</div>
+                        <div class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Years Industry Experience[cite: 5]</div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 mb-1">100%</div>
+                        <div class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Remote Operations Ready</div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 mb-1">C2</div>
+                        <div class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">EF SET Proficient English[cite: 5]</div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 mb-1">15+</div>
+                        <div class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Enterprise Tools Mastered</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experience" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 text-xs font-bold uppercase tracking-wider mb-2">
+                            <i data-lucide="briefcase" class="w-4 h-4"></i> Career History
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Professional Experience</h2>
+                    </div>
+
+                    <!-- Domain Filters -->
+                    <div class="flex flex-wrap gap-2" id="experienceFilters">
+                        <button type="button" data-filter="all" class="exp-filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-brand-600 text-white shadow-md transition-all">All Roles</button>
+                        <button type="button" data-filter="support" class="exp-filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">Customer Support</button>
+                        <button type="button" data-filter="leadership" class="exp-filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">Leadership & Ops</button>
+                        <button type="button" data-filter="it" class="exp-filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">IT Service Desk</button>
+                    </div>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="space-y-6" id="timelineList">
+                    <!-- Experience Card 1 -->
+                    <div class="exp-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all" data-category="support">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Customer Support Specialist</h3>
+                                    <span class="px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold">Symplr</span>
+                                </div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Remote Operations</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                November 2024 – August 2026[cite: 5, 6]
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-slate-600 dark:text-slate-300 text-sm mb-4">
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Helped recruiters use and navigate the portal[cite: 5, 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Troubleshot platform and application issues[cite: 5, 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"><span>Helped applicants through job inquiries and application submissions[cite: 5, 6].</span></li>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Portal Navigation</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Applicant Support</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Troubleshooting</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience Card 2 -->
+                    <div class="exp-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all" data-category="leadership">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Customer Service Director</h3>
+                                    <span class="px-2.5 py-1 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 text-xs font-semibold">Luxury Travel Hackers</span>
+                                </div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Remote Leadership & Operations</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                December 2021 – October 2024[cite: 5, 6]
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-slate-600 dark:text-slate-300 text-sm mb-4">
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>People Management[cite: 5, 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Client Onboarding and Lead Generation[cite: 5, 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Lead Scrubbing and Process Analysis[cite: 5, 6].</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">People Management</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Client Onboarding</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Lead Generation</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Process Analyst</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience Card 3 -->
+                    <div class="exp-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all" data-category="support">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Content Moderator (TikTok App)</h3>
+                                    <span class="px-2.5 py-1 rounded-md bg-pink-100 dark:bg-pink-950 text-pink-700 dark:text-pink-300 text-xs font-semibold">Conectys</span>
+                                </div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Onsite Operations</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                May 2019 – December 2021[cite: 6]
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-slate-600 dark:text-slate-300 text-sm mb-4">
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Video moderator and Live stream video moderator[cite: 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Account Profile moderator and Comment database moderator[cite: 6].</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Video Moderator</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Live Stream Moderator</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Database Safety</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience Card 4 -->
+                    <div class="exp-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all" data-category="leadership">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Peer Coach / Aviation Gear Specialist</h3>
+                                    <span class="px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 text-xs font-semibold">Hinduja Global Solutions (Bose)</span>
+                                </div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Onsite Technical Specialist</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                April 2016 – May 2019[cite: 6]
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-slate-600 dark:text-slate-300 text-sm mb-4">
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Coached agents who need a refresher and monitored their performance before endorsing them to their respective teams[cite: 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Last point of contact for professional musicians, music producers, and sound engineers who need professional advice on their Bose studio equipment[cite: 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Supports US Military Air Force pilots on their Bose Aviation Headset[cite: 6].</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">US Military Support</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Agent Coaching</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Aviation Gear</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience Card 5 -->
+                    <div class="exp-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all" data-category="it">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <div class="flex items-center gap-3">
+                                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Level 2 I.T. Service Desk Analyst | SME</h3>
+                                    <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">ATOS</span>
+                                </div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Onsite Enterprise IT Support</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl w-fit">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                March 2011 – April 2016[cite: 6]
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-slate-600 dark:text-slate-300 text-sm mb-4">
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Network Issues, Microsoft Exchange, and Active Directory[cite: 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>MS Application Support, VPN Issues, Incident Management, and Escalation Ticket Handling[cite: 6].</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Remote Support, Chat Support, Software Push, Onboarding, and Remote Server Admin[cite: 6].</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Active Directory</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Incident Management</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">MS Exchange</span>
+                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Remote Server Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Tools Matrix Section -->
+        <section id="skills" class="py-16 bg-white dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <div class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 text-xs font-bold uppercase tracking-wider mb-2">
+                        <i data-lucide="cpu" class="w-4 h-4"></i> Core Competencies
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Skills & Enterprise Tools</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Professional Skills Card -->
+                    <div class="p-6 sm:p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="award" class="w-5 h-5 text-brand-500"></i> Professional Expertise
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> E-Commerce[cite: 5]
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> ITIL Certified[cite: 5]
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Effective Communication[cite: 5]
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Problem Solver[cite: 5]
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Process Analyst[cite: 5]
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> People Management[cite: 5]
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Leadership[cite: 5]
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Customer Service[cite: 5]
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Software & Stack Card -->
+                    <div class="p-6 sm:p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="terminal" class="w-5 h-5 text-cyan-500"></i> Enterprise Stack & Tools[cite: 5]
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Salesforce[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Go High Level[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Zendesk[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Contact Science[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Athena[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Service Now[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Remedy[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">SDM12[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">MS 365/Teams[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Intercom[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Slack[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">RingCentral[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Google Apps[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">Active Directory[cite: 5]</span>
+                            <span class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300">MS Exchange[cite: 5]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="p-8 sm:p-12 rounded-3xl gradient-bg text-white shadow-2xl relative overflow-hidden text-center">
+                    <div class="absolute -right-12 -top-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
+                    
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Let's Build Something Exceptional Together</h2>
+                    <p class="text-blue-100 max-w-xl mx-auto mb-8 text-sm sm:text-base">
+                        Currently exploring full-time remote roles in customer support operations, team leadership, and technical service management. Let's connect!
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center gap-4">
+                        <a href="mailto:urbanscience15@gmail.com" class="px-8 py-3.5 rounded-xl bg-white text-brand-700 font-bold text-sm shadow-lg hover:bg-slate-100 active:scale-95 transition-all flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>urbanscience15@gmail.com[cite: 5]</span>
+                        </a>
+                        <a href="tel:+639672340115" class="px-8 py-3.5 rounded-xl bg-slate-900/30 border border-white/30 text-white font-bold text-sm hover:bg-slate-900/50 active:scale-95 transition-all flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            <span>+639672340115[cite: 5]</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-center text-xs text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 David Joaquin C. Ligot. All rights reserved.</p>
+            <p class="flex items-center gap-1">
+                Designed with <i data-lucide="heart" class="w-3.5 h-3.5 text-red-500 fill-current"></i> for Remote Operational Excellence
+            </p>
+        </div>
+    </footer>
+
+    <!-- Admin Authentication Modal for Photo Upload -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-slate-900 dark:text-white text-lg">Admin Authentication</h3>
+                <button id="closeModalBtn" type="button" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Enter password to upload a custom profile picture.</p>
+            <div>
+                <input type="password" id="adminPasswordInput" placeholder="Enter Password" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <p id="passwordError" class="text-xs text-red-500 mt-1 hidden">Incorrect password. Access denied.</p>
+            </div>
+            <button id="submitPasswordBtn" type="button" class="w-full py-2.5 rounded-xl gradient-bg text-white font-semibold text-sm shadow-md hover:opacity-95 transition-all">
+                Unlock & Upload
+            </button>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Passcode configuration (Change 'admin123' if desired)
+        const ADMIN_PASSCODE = "admin123";
+
+        // Load saved photo from local storage on page start
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedPhoto = localStorage.getItem('user_profile_photo');
+            if (savedPhoto) {
+                document.getElementById('mainAvatar').src = savedPhoto;
+                document.getElementById('navAvatar').src = savedPhoto;
+            }
+        });
+
+        // Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const htmlElement = document.documentElement;
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Experience Category Filtering
+        const filterButtons = document.querySelectorAll('.exp-filter-btn');
+        const experienceCards = document.querySelectorAll('.exp-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-brand-600', 'text-white', 'shadow-md');
+                    b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+                btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                btn.classList.add('bg-brand-600', 'text-white', 'shadow-md');
+
+                const filterValue = btn.getAttribute('data-filter');
+                experienceCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Copy Email Address Action
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        copyEmailBtn.addEventListener('click', () => {
+            const email = 'urbanscience15@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const btnText = document.getElementById('copyEmailText');
+                btnText.textContent = 'Email Copied!';
+                setTimeout(() => {
+                    btnText.textContent = 'Copy Email Address';
+                }, 2500);
+            });
+        });
+
+        // Admin Modal Controls for Photo Upload
+        const photoContainer = document.getElementById('photoContainer');
+        const adminModal = document.getElementById('adminModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const submitPasswordBtn = document.getElementById('submitPasswordBtn');
+        const adminPasswordInput = document.getElementById('adminPasswordInput');
+        const passwordError = document.getElementById('passwordError');
+        const photoInput = document.getElementById('photoInput');
+
+        photoContainer.addEventListener('click', () => {
+            adminPasswordInput.value = '';
+            passwordError.classList.add('hidden');
+            adminModal.classList.remove('hidden');
+            adminPasswordInput.focus();
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            adminModal.classList.add('hidden');
+        });
+
+        submitPasswordBtn.addEventListener('click', () => {
+            if (adminPasswordInput.value === ADMIN_PASSCODE) {
+                adminModal.classList.add('hidden');
+                photoInput.click();
+            } else {
+                passwordError.classList.remove('hidden');
+            }
+        });
+
+        // Process file upload and store locally
+        photoInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Image = e.target.result;
+                    document.getElementById('mainAvatar').src = base64Image;
+                    document.getElementById('navAvatar').src = base64Image;
+                    localStorage.setItem('user_profile_photo', base64Image);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
